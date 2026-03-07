@@ -6,9 +6,103 @@
   <meta name="description" content="Abu Kaisar Mohammad Masum — research portfolio in Quantum ML and Emerging Computing." />
   <title>Abu Kaisar Mohammad Masum | Portfolio</title>
   <link rel="stylesheet" href="assets/style.css" />
-
-  <!-- Icons (Font Awesome) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
+
+  <style>
+    /* ── Venn diagram – uses only site CSS variables & colors ── */
+    .venn-wrap {
+      width: 100%;
+      max-width: 660px;
+      margin: 18px auto 0;
+    }
+    .venn-wrap svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    /* circle interactions */
+    .vgroup .vcircle        { opacity: .12; transition: opacity .3s; }
+    .vgroup .vcircle-border { fill: none; stroke-width: 1.5; opacity: .4; transition: opacity .3s; }
+    .vgroup:hover .vcircle        { opacity: .22; }
+    .vgroup:hover .vcircle-border { opacity: 1; }
+
+    /* SVG text — same font stack as body */
+    .vclabel {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 13px;
+      font-weight: 700;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      pointer-events: none;
+    }
+    .vclabel-sub {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 9px;
+      letter-spacing: .04em;
+      text-anchor: middle;
+      pointer-events: none;
+      fill: #475569;
+    }
+    .vilabel {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 8px;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      pointer-events: none;
+      fill: #475569;
+    }
+    .vcentre {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 11px;
+      font-weight: 700;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      pointer-events: none;
+      fill: #0f172a;
+    }
+    .vcentre-sub {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 8px;
+      letter-spacing: .08em;
+      text-anchor: middle;
+      pointer-events: none;
+      fill: #475569;
+    }
+
+    /* subtle pulse on centre using site --accent blue */
+    @keyframes vpulse {
+      0%   { r: 42; opacity: .4; }
+      100% { r: 64; opacity: 0;  }
+    }
+    .vpulse { fill: none; stroke: #2563eb; stroke-width: 1; animation: vpulse 2.8s ease-out infinite; }
+    .vpulse:nth-child(2) { animation-delay: 1.4s; }
+
+    /* legend row — uses .card / .tag look */
+    .venn-legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .vlegend-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 12px;
+      border: 1px solid rgba(15,23,42,.12);
+      border-radius: 12px;
+      background: rgba(15,23,42,.02);
+    }
+    .vlegend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .vlegend-name { font-size: 13px; font-weight: 700; }
+    .vlegend-desc { font-size: 11px; color: #475569; margin-top: 2px; line-height: 1.4; }
+  </style>
 </head>
 
 <body>
@@ -25,29 +119,22 @@
           Ph.D. Candidate • Quantum Machine Learning • LLM • Emerging Computing • Hyperdimensional Computing (HDC)
         </p>
 
-        <!-- Links with icons -->
         <div class="links">
           <a class="iconlink" href="mailto:c00591145@louisiana.edu" title="Email (Outlook)">
             <i class="fa-solid fa-envelope"></i>
             <span>c00591145@louisiana.edu</span>
           </a>
-
           <span>·</span>
-
           <a class="iconlink" href="https://github.com/kaisarmasum" target="_blank" rel="noreferrer" title="GitHub">
             <i class="fa-brands fa-github"></i>
             <span>GitHub</span>
           </a>
-
           <span>·</span>
-
           <a class="iconlink" href="https://scholar.google.com/citations?user=B194MGYAAAAJ&hl=en" target="_blank" rel="noreferrer" title="Google Scholar">
             <i class="fa-solid fa-graduation-cap"></i>
             <span>Google Scholar</span>
           </a>
-
           <span>·</span>
-
           <a class="iconlink" href="https://www.linkedin.com/in/abukaisar24/" target="_blank" rel="noreferrer" title="LinkedIn">
             <i class="fa-brands fa-linkedin"></i>
             <span>LinkedIn</span>
@@ -66,6 +153,7 @@
 
     <nav class="nav">
       <a href="#about">About</a>
+      <a href="#research-map">Research Map</a>
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
       <a href="#teaching">Teaching</a>
@@ -75,6 +163,8 @@
   </header>
 
   <main class="container">
+
+    <!-- ══ ABOUT ══ -->
     <section id="about" class="card">
       <h2>About</h2>
       <p>
@@ -98,7 +188,7 @@
           </ul>
         </div>
         <div>
-          <h3>Service & Community</h3>
+          <h3>Service &amp; Community</h3>
           <ul>
             <li>IEEE, IEEE CASS, IEEE CEDA, IEEE Quantum Technical Community</li>
             <li>Secretary: IEEE Computer Society (2026-2027) (IEEE Lafayette Section)</li>
@@ -111,6 +201,142 @@
       </div>
     </section>
 
+    <!-- ══ RESEARCH MAP ══ -->
+    <section id="research-map" class="card">
+      <div class="section-head">
+        <h2>Research Map</h2>
+        <span class="muted tiny">Intersecting frontiers in emerging computing</span>
+      </div>
+
+      <div class="venn-wrap">
+        <!--
+          4 circles, overlapping in a 2×2 grid:
+            QML  top-left    cx=228 cy=198 r=145  → blue   #2563eb
+            HDC  top-right   cx=412 cy=198 r=145  → red    #dc2626
+            HW   bot-left    cx=228 cy=368 r=145  → green  #16a34a
+            LLM  bot-right   cx=412 cy=368 r=145  → amber  #d97706
+        -->
+        <svg viewBox="0 0 640 560" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="gQML" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#2563eb" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#2563eb" stop-opacity=".08"/>
+            </radialGradient>
+            <radialGradient id="gHDC" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#dc2626" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#dc2626" stop-opacity=".08"/>
+            </radialGradient>
+            <radialGradient id="gHW" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#16a34a" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#16a34a" stop-opacity=".08"/>
+            </radialGradient>
+            <radialGradient id="gLLM" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#d97706" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#d97706" stop-opacity=".08"/>
+            </radialGradient>
+            <radialGradient id="gCtr" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#2563eb" stop-opacity=".09"/>
+              <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- QML – top-left -->
+          <g class="vgroup">
+            <circle class="vcircle"        cx="228" cy="198" r="145" fill="url(#gQML)"/>
+            <circle class="vcircle-border" cx="228" cy="198" r="145" stroke="#2563eb"/>
+            <text class="vclabel"     x="142" y="132" fill="#2563eb">Quantum</text>
+            <text class="vclabel"     x="142" y="148" fill="#2563eb">Machine Learning</text>
+            <text class="vclabel-sub" x="142" y="163">QML · QIP · QRNG</text>
+          </g>
+
+          <!-- HDC – top-right -->
+          <g class="vgroup">
+            <circle class="vcircle"        cx="412" cy="198" r="145" fill="url(#gHDC)"/>
+            <circle class="vcircle-border" cx="412" cy="198" r="145" stroke="#dc2626"/>
+            <text class="vclabel"     x="498" y="132" fill="#dc2626">Hyperdimensional</text>
+            <text class="vclabel"     x="498" y="148" fill="#dc2626">Computing</text>
+            <text class="vclabel-sub" x="498" y="163">HDC · VSA · ReRAM</text>
+          </g>
+
+          <!-- HW – bottom-left -->
+          <g class="vgroup">
+            <circle class="vcircle"        cx="228" cy="368" r="145" fill="url(#gHW)"/>
+            <circle class="vcircle-border" cx="228" cy="368" r="145" stroke="#16a34a"/>
+            <text class="vclabel"     x="142" y="428" fill="#16a34a">Hardware-</text>
+            <text class="vclabel"     x="142" y="444" fill="#16a34a">Efficient AI</text>
+            <text class="vclabel-sub" x="142" y="459">Edge · Low-Power · tinyML</text>
+          </g>
+
+          <!-- LLM – bottom-right -->
+          <g class="vgroup">
+            <circle class="vcircle"        cx="412" cy="368" r="145" fill="url(#gLLM)"/>
+            <circle class="vcircle-border" cx="412" cy="368" r="145" stroke="#d97706"/>
+            <text class="vclabel"     x="498" y="428" fill="#d97706">LLM &amp; NLP</text>
+            <text class="vclabel-sub" x="498" y="445">BERT · Fine-Tuning</text>
+            <text class="vclabel-sub" x="498" y="459">Benchmarking</text>
+          </g>
+
+          <!-- ── Intersection labels ── -->
+          <text class="vilabel" x="320" y="155">Quantum-HDC Hybrid</text>
+
+          <text class="vilabel" x="170" y="286">Quantum</text>
+          <text class="vilabel" x="170" y="297">Edge Deploy</text>
+
+          <text class="vilabel" x="470" y="286">HD-Accelerated</text>
+          <text class="vilabel" x="470" y="297">Inference</text>
+
+          <text class="vilabel" x="320" y="414">Efficient LLM Quant.</text>
+
+          <text class="vilabel" x="278" y="304">Quantum NLP</text>
+          <text class="vilabel" x="362" y="304">HD Hardware</text>
+
+          <!-- ── Centre ── -->
+          <circle class="vpulse" cx="320" cy="283"/>
+          <circle class="vpulse" cx="320" cy="283"/>
+          <ellipse cx="320" cy="283" rx="52" ry="46" fill="url(#gCtr)"/>
+          <!-- centre border using site --line color -->
+          <ellipse cx="320" cy="283" rx="52" ry="46" fill="none"
+                   stroke="rgba(15,23,42,.18)" stroke-width="1" stroke-dasharray="4 3"/>
+          <text class="vcentre"     x="320" y="276">Hardware-Aware</text>
+          <text class="vcentre"     x="320" y="290">Emerging AI</text>
+          <text class="vcentre-sub" x="320" y="304">CORE THESIS</text>
+        </svg>
+      </div>
+
+      <!-- legend — styled like site .tag chips -->
+      <div class="venn-legend">
+        <div class="vlegend-item">
+          <div class="vlegend-dot" style="background:#2563eb"></div>
+          <div>
+            <div class="vlegend-name deepblue">Quantum ML</div>
+            <div class="vlegend-desc">Hybrid models, image encoding, QRNG, QuanText</div>
+          </div>
+        </div>
+        <div class="vlegend-item">
+          <div class="vlegend-dot" style="background:#dc2626"></div>
+          <div>
+            <div class="vlegend-name red">HDC / VSA</div>
+            <div class="vlegend-desc">Hypervectors, deterministic learning, GPU HDC, ReRAM</div>
+          </div>
+        </div>
+        <div class="vlegend-item">
+          <div class="vlegend-dot" style="background:#16a34a"></div>
+          <div>
+            <div class="vlegend-name" style="color:#16a34a;font-weight:700">Hardware-Efficient AI</div>
+            <div class="vlegend-desc">Edge inference, malware detection, health monitoring</div>
+          </div>
+        </div>
+        <div class="vlegend-item">
+          <div class="vlegend-dot" style="background:#d97706"></div>
+          <div>
+            <div class="vlegend-name" style="color:#d97706;font-weight:700">LLM &amp; NLP</div>
+            <div class="vlegend-desc">LLM quantization, BERT fine-tuning, benchmarking</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ NEWS ══ -->
     <section id="news" class="card">
       <div class="section-head">
         <h2>News</h2>
@@ -148,6 +374,7 @@
       </ul>
     </section>
 
+    <!-- ══ PUBLICATIONS ══ -->
     <section id="publications" class="card">
       <div class="section-head">
         <h2>Selected Publications</h2>
@@ -189,9 +416,7 @@
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="DATE" data-year="2026">
-          <div class="thumb" data-bg="assets/papers/daiquiri.png" style="background-image:url('assets/papers/daiquiri.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(daiquiri.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/daiquiri.png" style="background-image:url('assets/papers/daiquiri.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(daiquiri.png)</span></div></div>
           <div class="pubbody">
             <div class="badge"><span class="deepblue">DATE'26</span> (A)</div>
             <h3 class="pubtitle">DAIQUIRI: Dynamic Quantization with Layer-wise Sensitivity Ranking for Hardware-Efficient LLMs</h3>
@@ -202,9 +427,7 @@
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="DATE" data-year="2026">
-          <div class="thumb" data-bg="assets/papers/poseidon.png" style="background-image:url('assets/papers/poseidon.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(poseidon.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/poseidon.png" style="background-image:url('assets/papers/poseidon.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(poseidon.png)</span></div></div>
           <div class="pubbody">
             <div class="badge"><span class="deepblue">DATE'26</span> (A)</div>
             <h3 class="pubtitle">POSEiDON: Pose Estimation in Dynamic On-device Networks via Hyperdimensional Computing</h3>
@@ -215,9 +438,7 @@
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="DATE" data-year="2026">
-          <div class="thumb" data-bg="assets/papers/sphd.png" style="background-image:url('assets/papers/sphd.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(sphd.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/sphd.png" style="background-image:url('assets/papers/sphd.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(sphd.png)</span></div></div>
           <div class="pubbody">
             <div class="badge"><span class="deepblue">DATE'26</span> (A)</div>
             <h3 class="pubtitle">SP-HD: Stochastic Projection-Based HyperDimensional Architecture for Near-Sensor Image Classification</h3>
@@ -226,39 +447,33 @@
             <div class="actions"><a href="#" onclick="return false;" class="mutedlink" title="Add link">Paper</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">Slides</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">BibTeX</a></div>
           </div>
         </article>
-        
-          <article class="pubcard" data-type="Conference" data-venue="AAAI" data-year="2026">
-          <div class="thumb" data-bg="assets/papers/aaai_26.png" style="background-image:url('assets/papers/aaai_26.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(aaai_26.png)</span></div>
-          </div>
+
+        <article class="pubcard" data-type="Conference" data-venue="AAAI" data-year="2026">
+          <div class="thumb" data-bg="assets/papers/aaai_26.png" style="background-image:url('assets/papers/aaai_26.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(aaai_26.png)</span></div></div>
           <div class="pubbody">
             <div class="badge"><span class="red">AAAI'26</span> (A*)</div>
             <h3 class="pubtitle">Deterministic Hyperdimensional Learning with Rank Refinement (Student Abstract)</h3>
             <div class="authors"><span class="me">Abu Kaisar Mohammad Masum</span>, Sercan Aygun</div>
-            <div class="venue">Association for the Advancement of Artificial Intelligence (AAAI) </div>
+            <div class="venue">Association for the Advancement of Artificial Intelligence (AAAI)</div>
             <div class="actions"><a href="" onclick="return false;" class="mutedlink" title="Add link">Paper</a> <a href="" onclick="return false;" class="mutedlink" title="Add link">Slides</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">BibTeX</a></div>
           </div>
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="DAC" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/hadamard.png" style="background-image:url('assets/papers/hadamard.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(hadamard.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/hadamard.png" style="background-image:url('assets/papers/hadamard.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(hadamard.png)</span></div></div>
           <div class="pubbody">
             <div class="badge"><span class="red">DAC'25</span> (A*)</div>
             <h3 class="pubtitle">On-the-Fly Hadamard Hypervector Processing for Efficient Hyperdimensional Computing</h3>
             <div class="authors"><span class="me">Abu Kaisar Mohammad Masum</span>, Mehran Shoushtari Moghadam, Sabrina Hassan Moon, Ahmed Mamdouh Mohamed Ahmed, M. Hassan Najafi, Dayane Reis, Sercan Aygun</div>
-            <div class="venue">Design Automation Conference (DAC) (Acceptance rate: 22.6%) </div>
+            <div class="venue">Design Automation Conference (DAC) (Acceptance rate: 22.6%)</div>
             <div class="actions"><a href="10.1109/DAC63849.2025.11133357" onclick="return false;" class="mutedlink" title="Add link">Paper</a> <a href="https://ieeexplore.ieee.org/abstract/document/11133357" onclick="return false;" class="mutedlink" title="Add link">Slides</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">BibTeX</a></div>
           </div>
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="ISLPED" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/idvsa.png" style="background-image:url('assets/papers/idvsa.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(idvsa.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/idvsa.png" style="background-image:url('assets/papers/idvsa.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(idvsa.png)</span></div></div>
           <div class="pubbody">
-            <div class="badge"> <span class="deepblue">ISLPED'25</span> (A)</div>
+            <div class="badge"><span class="deepblue">ISLPED'25</span> (A)</div>
             <h3 class="pubtitle">ID-VSA: Independent and Dynamic Vector Symbolic Architecture for Energy-Efficient Edge AI</h3>
             <div class="authors">Mehran Moghadam✥, <span class="me">Abu Kaisar Mohammad Masum</span>✥, Sercan Aygun, M. Hassan Najafi (✥ equal contribution)</div>
             <div class="venue">International Symposium on Low Power Electronics and Design (ISLPED) (Acceptance rate: 22.5%)</div>
@@ -267,48 +482,40 @@
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="ICCD" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/malware.png" style="background-image:url('assets/papers/malware.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(malware.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/malware.png" style="background-image:url('assets/papers/malware.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(malware.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">ICCD'25</div>
             <h3 class="pubtitle">GAN–BiLSTM–HDC: A Hybrid Framework for Robust and Hardware-Efficient Malware Detection</h3>
             <div class="authors">Emilien Meyer, <span class="me">Abu Kaisar Mohammad Masum</span>, Mehran Moghadam, Lida Kouhalvandi, Gourav Datta, Sercan Aygun, M. Hassan Najafi</div>
-            <div class="venue"> IEEE International Conference on Computer Design (ICCD) (Acceptance rate:~26%)</div>
+            <div class="venue">IEEE International Conference on Computer Design (ICCD) (Acceptance rate:~26%)</div>
             <div class="actions"><a href="#" onclick="return false;" class="mutedlink" title="Add link">Paper</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">Slides</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">BibTeX</a></div>
           </div>
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="QCE" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/qrng.png" style="background-image:url('assets/papers/qrng.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(qrng.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/qrng.png" style="background-image:url('assets/papers/qrng.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(qrng.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">QCE'25</div>
             <h3 class="pubtitle">Quantum-Based Random Numbers: Entropy, Efficiency, and Practicality</h3>
             <div class="authors"><span class="me">Abu Kaisar Mohammad Masum</span>, Mehran Shoushtari Moghadam, Lida Kouhalvandi, M. Hassan Najafi, Arman Roohi, Sercan Aygun</div>
-            <div class="venue">International Conference on Quantum Computing & Engineering (QCE)</div>
+            <div class="venue">International Conference on Quantum Computing &amp; Engineering (QCE)</div>
             <div class="actions"><a href="#" onclick="return false;" class="mutedlink" title="Add link">Paper</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">Slides</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">BibTeX</a></div>
           </div>
         </article>
 
-          <article class="pubcard" data-type="Conference" data-venue="AAAI Symposium (QIML)" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/qiml.png" style="background-image:url('assets/papers/qiml.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(qiml.png)</span></div>
-          </div>
+        <article class="pubcard" data-type="Conference" data-venue="AAAI Symposium (QIML)" data-year="2025">
+          <div class="thumb" data-bg="assets/papers/qiml.png" style="background-image:url('assets/papers/qiml.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(qiml.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">AAAI Symposium (QIML)'25</div>
             <h3 class="pubtitle">A Hybrid Classical-Quantum Fine Tuned BERT for Text Classification</h3>
             <div class="authors"><span class="me">Abu Kaisar Mohammad Masum</span>, Naveed Mahmud, M. Hassan Najafi, Sercan Aygun</div>
-            <div class="venue">AAAI Symposium on Quantum Information & Machine Learning (QIML)</div>
+            <div class="venue">AAAI Symposium on Quantum Information &amp; Machine Learning (QIML)</div>
             <div class="actions"><a href="https://ojs.aaai.org/index.php/AAAI-SS/article/view/36908" onclick="return false;" class="mutedlink" title="Add link">Paper</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">Slides</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">BibTeX</a></div>
           </div>
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="GLSVLSI" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/qip.png" style="background-image:url('assets/papers/qip.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(qip.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/qip.png" style="background-image:url('assets/papers/qip.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(qip.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">GLSVLSI'25</div>
             <h3 class="pubtitle">Quantum Image Processing: A Comparative Study of NEQR and FRQI Encoding Schemes with Hybrid Processing</h3>
@@ -319,9 +526,7 @@
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="GLSVLSI" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/parahdc.png" style="background-image:url('assets/papers/parahdc.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(parahdc.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/parahdc.png" style="background-image:url('assets/papers/parahdc.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(parahdc.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">GLSVLSI'25</div>
             <h3 class="pubtitle">ParaHDC: Leveraging GPU Acceleration for Scalable Hyperdimensional Learning</h3>
@@ -332,9 +537,7 @@
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="GLSVLSI" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/vsa.png" style="background-image:url('assets/papers/vsa.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(vsa.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/vsa.png" style="background-image:url('assets/papers/vsa.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(vsa.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">GLSVLSI'25</div>
             <h3 class="pubtitle">Robust Data Processing for Vector Symbolic Computing</h3>
@@ -345,35 +548,29 @@
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="GLSVLSI" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/rexhd.png" style="background-image:url('assets/papers/rexhd.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(rexhd.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/rexhd.png" style="background-image:url('assets/papers/rexhd.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(rexhd.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">GLSVLSI'25</div>
             <h3 class="pubtitle">ReX-HD: A Deterministic ReRAM-Based Hyperdimensional Computing Framework for Edge Computing</h3>
             <div class="authors">Sabrina Hassan Moon, Ahmed Ahmed, <span class="me">Abu Kaisar Mohammad Masum</span>, Sercan Aygun, Dayane Reis</div>
-            <div class="venue">Great Lakes Symposium on VLSI (GLSVLSI) (Acceptance rate:~27%) </div>
+            <div class="venue">Great Lakes Symposium on VLSI (GLSVLSI) (Acceptance rate:~27%)</div>
             <div class="actions"><a href="#" onclick="return false;" class="mutedlink" title="Add link">Paper</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">Slides</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">BibTeX</a></div>
           </div>
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="MWSCAS" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/mwscas.png" style="background-image:url('assets/papers/mwscas.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(mwscas.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/mwscas.png" style="background-image:url('assets/papers/mwscas.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(mwscas.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">MWSCAS'25</div>
             <h3 class="pubtitle">tiny Machine Learning on Android Devices: Continuous Health Monitoring with Wearables</h3>
-            <div class="authors"> Colin Dupuis,<span class="me"> Abu Kaisar Mohammad Masum</span>, M. Hassan Najafi, Ulkuhan Guler, Sercan Aygan</div>
+            <div class="authors">Colin Dupuis, <span class="me">Abu Kaisar Mohammad Masum</span>, M. Hassan Najafi, Ulkuhan Guler, Sercan Aygan</div>
             <div class="venue">International Midwest Symposium on Circuits and Systems (MWSCAS)</div>
             <div class="actions"><a href="https://ieeexplore.ieee.org/abstract/document/11244469" onclick="return false;" class="mutedlink" title="Add link">Paper</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">Slides</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">BibTeX</a></div>
           </div>
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="ISCAS" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/amshd.png" style="background-image:url('assets/papers/amshd.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(amshd.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/amshd.png" style="background-image:url('assets/papers/amshd.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(amshd.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">ISCAS'25</div>
             <h3 class="pubtitle">AMS-HD: Acute Mountain Sickness Detection with Hyperdimensional Computing</h3>
@@ -384,9 +581,7 @@
         </article>
 
         <article class="pubcard" data-type="Conference" data-venue="ISCAS" data-year="2025">
-          <div class="thumb" data-bg="assets/papers/truebsg.png" style="background-image:url('assets/papers/truebsg.png');">
-            <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(truebsg.png)</span></div>
-          </div>
+          <div class="thumb" data-bg="assets/papers/truebsg.png" style="background-image:url('assets/papers/truebsg.png');"><div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(truebsg.png)</span></div></div>
           <div class="pubbody">
             <div class="badge">ISCAS'25</div>
             <h3 class="pubtitle">TRUE-BSG: a True Random Bit-Stream Generator for Fast and Efficient Stochastic Computing</h3>
@@ -401,17 +596,17 @@
             <div class="thumb-fallback">Upload theme image<br/><span class="tiny muted">(quantext.png)</span></div>
           </div>
           <div class="pubbody">
-            <div class="badge"> <span class="deepblue">IEEE VIS'24 </span>(Poster)</div>
+            <div class="badge"><span class="deepblue">IEEE VIS'24</span> (Poster)</div>
             <h3 class="pubtitle">QuanText: Text Data Visualization in Quantum Computing</h3>
             <div class="authors"><span class="me">Abu Kaisar Mohammad Masum</span>, Naveed Mahmud</div>
-            <div class="venue"> IEEE Visualization Conference (IEEE VIS) </div>
+            <div class="venue">IEEE Visualization Conference (IEEE VIS)</div>
             <div class="actions"><a href="#" onclick="return false;" class="mutedlink" title="Add link">Paper</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">Slides</a> <a href="#" onclick="return false;" class="mutedlink" title="Add link">BibTeX</a></div>
           </div>
         </article>
-
       </div>
     </section>
-    
+
+    <!-- ══ TEACHING ══ -->
     <section id="teaching" class="card">
       <h2>Teaching</h2>
       <ul>
@@ -420,30 +615,30 @@
       </ul>
     </section>
 
-   <section id="awards" class="card">
-  <h2>Awards, Funding & Recognition</h2>
+    <!-- ══ AWARDS ══ -->
+    <section id="awards" class="card">
+      <h2>Awards, Funding &amp; Recognition</h2>
+      <h3>Funding &amp; Travel Awards</h3>
+      <ul>
+        <li><b>Winner:</b> NASA Beyond the Algorithm Challenge— Novel Computing Architectures for Flood Analysis (<b>$100K</b> grant)</li>
+        <li><b>Quantum Ideas Summer School</b> — Travel support (~<b>$2.5K</b>)</li>
+        <li><b>DAC Young Fellow Award</b> (2025) — Travel award (~<b>$1.4K</b>)</li>
+        <li><b>AAAI Travel Award</b> — Travel support (~<b>$1.04K</b>)</li>
+        <li><b>IEEE Computer Society Travel Award</b> — Travel support (~<b>$1K</b>)</li>
+        <li><b>IEEE CAS Student Travel Grant</b> — Travel support (<b>$1K</b>)</li>
+        <li><b>GLSVLSI'25 Student Volunteer Travel Award</b> — Travel support (~<b>$1K</b>)</li>
+      </ul>
+      <h3>Honors &amp; Recognition</h3>
+      <ul>
+        <li><b>Academic Excellence Award</b>, University of Louisiana at Lafayette (2025)</li>
+        <li><b>Leaf Award</b>, University of Louisiana at Lafayette (2025)</li>
+        <li><b>Peer Tutoring Excellence Awards</b> (Fall 2023 &amp; Spring 2024), Florida Institute of Technology</li>
+        <li><b>Outstanding Student of the Year</b> (2023), Florida Institute of Technology</li>
+        <li><b>Best Performing Faculty</b> and <b>Best Researcher</b>, Daffodil International University (2021)</li>
+      </ul>
+    </section>
 
-  <h3>Funding & Travel Awards</h3>
-  <ul>
-    <li><b>Winner:</b> NASA Beyond the Algorithm Challenge— Novel Computing Architectures for Flood Analysis (<b>$100K</b> grant)</li>
-    <li><b>Quantum Ideas Summer School</b> — Travel support (~<b>$2.5K</b>)</li>
-    <li><b>DAC Young Fellow Award</b> (2025) — Travel award (~<b>$1.4K</b>)</li>
-    <li><b>AAAI Travel Award</b> — Travel support (~<b>$1.04K</b>)</li>
-    <li><b>IEEE Computer Society Travel Award</b> — Travel support (~<b>$1K</b>)</li>
-    <li><b>IEEE CAS Student Travel Grant</b> — Travel support (<b>$1K</b>)</li>
-    <li><b>GLSVLSI'25 Student Volunteer Travel Award</b> — Travel support (~<b>$1K</b>)</li>
-  </ul>
-
-  <h3>Honors & Recognition</h3>
-  <ul>
-    <li><b>Academic Excellence Award</b>, University of Louisiana at Lafayette (2025)</li>
-    <li><b>Leaf Award</b>, University of Louisiana at Lafayette (2025)</li>
-    <li><b>Peer Tutoring Excellence Awards</b> (Fall 2023 & Spring 2024), Florida Institute of Technology</li>
-    <li><b>Outstanding Student of the Year</b> (2023), Florida Institute of Technology</li>
-    <li><b>Best Performing Faculty</b> and <b>Best Researcher</b>, Daffodil International University (2021)</li>
-  </ul>
-</section>
-
+    <!-- ══ CONTACT ══ -->
     <section id="contact" class="card">
       <h2>Contact</h2>
       <p>
@@ -463,12 +658,9 @@
     window.addEventListener("load", () => {
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Filter buttons
       const chips = document.querySelectorAll(".chip");
       const cards = document.querySelectorAll(".pubcard");
-
       function setActive(btn){ chips.forEach(b=>b.classList.remove("active")); btn.classList.add("active"); }
-
       chips.forEach(btn => {
         btn.addEventListener("click", () => {
           const f = btn.getAttribute("data-filter");
@@ -480,21 +672,14 @@
         });
       });
 
-      // Hide "Upload theme image" overlay when the background image exists
       document.querySelectorAll(".thumb").forEach((thumb) => {
         const url = thumb.getAttribute("data-bg");
         if (!url) return;
-
         const img = new Image();
         img.onload = () => {
           const fallback = thumb.querySelector(".thumb-fallback");
           if (fallback) fallback.style.display = "none";
         };
-        img.onerror = () => {
-          // keep fallback visible
-        };
-
-        // cache-bust (helps GitHub Pages caching)
         img.src = url + (url.includes("?") ? "&" : "?") + "v=" + Date.now();
       });
     });
